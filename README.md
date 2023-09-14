@@ -1,2 +1,2 @@
 # ml_algorithms
- implementation of the various ml algorithms
+repo for studying ml algorithms
