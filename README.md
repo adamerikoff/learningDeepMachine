@@ -7,4 +7,3 @@ repo for studying ml algorithms
 - **Multivariate Linear regression**
 - _Locally Estimated Scatterplot Smoothing (LOESS)_
 - _Multivariate Adaptive Regression Splines (MARS)_
-- 
