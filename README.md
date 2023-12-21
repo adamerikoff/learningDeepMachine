@@ -12,3 +12,8 @@ repo for studying ml algorithms
 
 - **Logistic regressions**
 - **Multinomial logistic regression**
+
+- SVM
+- Naive
+- Decision trees
+- Random Forest
