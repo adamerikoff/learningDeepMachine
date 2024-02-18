@@ -1,5 +1,5 @@
 # ml_algorithms
-repo for studying ml algorithms
+repo of various algorithms and ml models implementations
 
 ## Regression algorithms
 - **Linear regression**
