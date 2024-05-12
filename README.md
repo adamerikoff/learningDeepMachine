@@ -13,8 +13,10 @@
     * MobileNet
     * ShuffleNet
     * SENet: Squeeze and Excitation Network
-**Computer Vision**
+* **Object-Detection**
     * Object-Detection
+* **Pose Estimation**
+    * ...
 * **Other Computer Vision Algorithms:**
     * Support Vector Machines (SVMs) for image classification
     * K-Nearest Neighbors (KNN) for image classification
