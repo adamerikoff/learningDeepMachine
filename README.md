@@ -4,6 +4,7 @@
     * LeNet
     * AlexNet
     * VGG (VGG16, VGG19)
+    * GoogleNet
     * ResNet (ResNet50, ResNet101)
     * Inception (InceptionV3)
     * Xception
@@ -11,6 +12,9 @@
     * EfficientNet
     * MobileNet
     * ShuffleNet
+    * SENet: Squeeze and Excitation Network
+**Computer Vision**
+    * Object-Detection
 * **Other Computer Vision Algorithms:**
     * Support Vector Machines (SVMs) for image classification
     * K-Nearest Neighbors (KNN) for image classification
