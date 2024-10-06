@@ -5,7 +5,6 @@ using namespace std;
 
 int main() {
     float imageHistogram[N_GRAYLEVELS];
-
     int imageWidth, imageHeight, imgBitDepth;
     unsigned char imgHeader[BMP_HEADER_SIZE];
     unsigned char imgColorTable[BMP_COLOUR_TABLE_SIZE];
@@ -13,7 +12,7 @@ int main() {
     unsigned char imgOutBuffer[_512by512_IMG_SIZE];
 
     const char imgName[] ="./images/cameraman.bmp";
-    const char newImgName[] ="./images/cameraman_bright.bmp";
+    const char newImgName[] ="./images/cameraman_new.bmp";
 
     ImageProcessing *myImage  = new ImageProcessing(imgName,
                                                     newImgName,
@@ -30,7 +29,8 @@ int main() {
     // myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
     // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
     // myImage->computeImageHistogram(imgInBuffer, imageHeight, imageWidth, imageHistogram);
-    myImage->equalizeImageHistogram(imgInBuffer, imgOutBuffer, imageHeight, imageWidth);
+    // myImage->equalizeImageHistogram(imgInBuffer, imgOutBuffer, imageHeight, imageWidth);
+    myImage->rotateImage(imgInBuffer, imgOutBuffer, &imageWidth, &imageHeight);
     myImage->writeImage();
 
     cout << "Success !" << endl;

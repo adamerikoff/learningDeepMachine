@@ -49,6 +49,8 @@ class ImageProcessing {
         void computeImageHistogramFile(unsigned char * _imageData, int imageRows, int imageColumns, float hist[],const char *histFile);
         void equalizeImageHistogram(unsigned char *_inputImageData, unsigned char *_outImageData, int imageRows, int imageColumns);
 
+        void rotateImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int *width, int *height);
+
     protected:
 
     private:

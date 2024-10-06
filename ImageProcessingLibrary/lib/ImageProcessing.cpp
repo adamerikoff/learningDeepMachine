@@ -221,3 +221,20 @@ void ImageProcessing::equalizeImageHistogram(unsigned char *_inputImageData, uns
     }
     computeImageHistogramFile(&_outImageData[0], imageRows, imageColumns, &histogram[0], finalHistogram);
 }
+
+void ImageProcessing::rotateImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int *width, int *height) {
+    // New dimensions after rotation
+    int newWidth = *height;
+    int newHeight = *width;
+
+    // Update width and height
+    *width = newWidth;
+    *height = newHeight;
+
+    // Rotate the image 90 degrees clockwise
+    for (int y = 0; y < newHeight; y++) {
+        for (int x = 0; x < newWidth; x++) {
+            _outputImageData[x + y * newWidth] = _inputImageData[(*height - 1 - y) + x * (*width)];
+        }
+    }
+}

@@ -14,6 +14,11 @@
 | Compute image histogram                                | ✅    |
 | Compute and save image histogram to a file             | ✅    |
 | Equalize image histogram                               | ✅    |
+| **Affine Transformations**                             |       |
+| Image Rotation                                         | ✅    |
+| Image Scaling                                          |       |
+| Image Reflection                                       |       |
+| Image Shearing                                         |       |
 
 # Models Implementations
 | Model Name                                                                    | Done  |
