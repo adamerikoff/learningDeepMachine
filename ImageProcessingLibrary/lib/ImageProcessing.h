@@ -2,6 +2,9 @@
 #define IMAGEPROCESSING_H
 
 #include <iostream>
+#include <cmath>   // For std::abs
+#include <numeric> // For std::accumulate
+#include <algorithm> // For std::count_if
 
 static const int _512by512_IMG_SIZE = 262144;
 static const int BMP_COLOUR_TABLE_SIZE = 1024;
@@ -31,7 +34,12 @@ class ImageProcessing {
         void readImage();
         void writeImage();
         void copyImageData(unsigned char *_sourceBuffer, unsigned char *_destinationBuffer, int bufferSize);
+
+        int countPixelsAboveThreshold(unsigned char *data, int size, float threshold);
+        float calculateGroupMean(unsigned char *data, int size, float threshold, bool aboveThreshold, int groupCount);
         void binarizeImageData(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int threshold);
+        void iterativelyBinarizeImageData(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize);
+
         void increaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness);
         void decreaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness);
 

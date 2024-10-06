@@ -80,6 +80,46 @@ void ImageProcessing::binarizeImageData(unsigned char *_inputImageData, unsigned
     }
 }
 
+// Helper function to count pixels above the threshold
+int ImageProcessing::countPixelsAboveThreshold(unsigned char *data, int size, float threshold) {
+    return std::count_if(data, data + size, [threshold](unsigned char pixel) {
+        return pixel > threshold;
+    });
+}
+
+// Helper function to calculate the mean of a group based on threshold
+float ImageProcessing::calculateGroupMean(unsigned char *data, int size, float threshold, bool aboveThreshold, int groupCount) {
+    if (groupCount == 0) return 0.0f;
+
+    return std::accumulate(data, data + size, 0.0f, [threshold, aboveThreshold](float sum, unsigned char pixel) {
+        return (aboveThreshold ? (pixel > threshold) : (pixel <= threshold)) ? sum + pixel : sum;
+    }) / groupCount;
+}
+
+
+void ImageProcessing::iterativelyBinarizeImageData(unsigned char *inputImageData, unsigned char *outputImageData, int imageSize) {
+    // Initialize random threshold between 0 and 255
+    float currentThreshold = rand() % 256;
+    float previousThreshold;
+    const float thresholdConvergence = 1e-6; // Convergence limit
+    float deltaThreshold = std::numeric_limits<float>::infinity(); // Infinite difference for the first loop
+
+    while (deltaThreshold > thresholdConvergence) {
+        int group1Count = countPixelsAboveThreshold(inputImageData, imageSize, currentThreshold);
+        int group2Count = imageSize - group1Count;
+
+        float group1Mean = calculateGroupMean(inputImageData, imageSize, currentThreshold, true, group1Count);
+        float group2Mean = calculateGroupMean(inputImageData, imageSize, currentThreshold, false, group2Count);
+
+        previousThreshold = currentThreshold;
+        currentThreshold = 0.5f * (group1Mean + group2Mean);
+        deltaThreshold = std::abs(currentThreshold - previousThreshold); // Difference between thresholds
+    }
+
+    // Binarize the image with the final threshold
+    binarizeImageData(inputImageData, outputImageData, imageSize, static_cast<int>(currentThreshold));
+}
+
 void ImageProcessing::increaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness) {
     for (int i = 0; i < imageSize; i++) {
         int temp = _inputImageData[i] + brightness;

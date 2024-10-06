@@ -25,7 +25,7 @@ int main() {
                                                     );
 
     myImage->readImage();
-    myImage->binarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
+    myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
     // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
     myImage->writeImage();
 
