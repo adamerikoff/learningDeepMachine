@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main() {
-    FILE *streamIN = fopen("./sample_image.bmp", "rb");
-    FILE *fo = fopen("sample_image_copy.bmp", "wb");
+    FILE *streamIN = fopen("./cameraman.bmp", "rb");
+    FILE *fo = fopen("new_cameraman.bmp", "wb");
 
     if(streamIN == (FILE*)0) {
         printf("Unable to open file!");

@@ -2,7 +2,7 @@
 
 #define BMP_HEADER_SIZE       54
 #define BMP_COLOUR_TABLE_SIZE 1024
-#define CUSTOM_IMG_SIZE       (1280 * 853)  // Add parentheses to ensure the correct multiplication
+#define CUSTOM_IMG_SIZE       (256 * 256)  // Add parentheses to ensure the correct multiplication
 
 void ImageReader(
     const char* name,
@@ -26,8 +26,8 @@ int main() {
     unsigned char imageColourTable[BMP_COLOUR_TABLE_SIZE];  // Fix size
     unsigned char imageBuffer[CUSTOM_IMG_SIZE];  // Fix size
 
-    const char imageName[] = "./sample_image.bmp";
-    const char newImageName[] = "./new_sample_image.bmp";
+    const char imageName[] = "./cameraman.bmp";
+    const char newImageName[] = "./new_cameraman.bmp";
 
     ImageReader(imageName, &imageHeight, &imageWidth, &imageBitDepth, &imageHeader[0], &imageColourTable[0], &imageBuffer[0]);
     ImageWriter(newImageName, imageBitDepth, imageHeader, imageColourTable, imageBuffer);
