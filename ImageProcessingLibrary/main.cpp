@@ -29,7 +29,8 @@ int main() {
     myImage->readImage();
     // myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
     // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
-    myImage->computeImageHistogram(imgInBuffer, imageHeight, imageWidth, imageHistogram);
+    // myImage->computeImageHistogram(imgInBuffer, imageHeight, imageWidth, imageHistogram);
+    myImage->equalizeImageHistogram(imgInBuffer, imgOutBuffer, imageHeight, imageWidth);
     myImage->writeImage();
 
     cout << "Success !" << endl;

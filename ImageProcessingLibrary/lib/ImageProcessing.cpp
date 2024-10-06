@@ -139,16 +139,13 @@ void ImageProcessing::decreaseBrightness(unsigned char *_inputImageData, unsigne
 void ImageProcessing::computeImageHistogram(unsigned char *_imageData, int imageRows, int imageColumns, float hist[]) {
     FILE *fptr;
     fptr = fopen("./histogram.txt", "w");
-
     if (fptr == nullptr) {
         printf("Error opening file!\n");
         return;
     }
-
     int x, y, i;
     long int histogram_index[256] = {0}; // Initialize to zero
     long int sum = 0;
-
     // Build histogram
     for (y = 0; y < imageRows; y++) {
         for (x = 0; x < imageColumns; x++) {
@@ -157,16 +154,70 @@ void ImageProcessing::computeImageHistogram(unsigned char *_imageData, int image
             sum++;
         }
     }
-
     // Normalize the histogram and write to output array
     for (i = 0; i <= 255; i++) {
         hist[i] = (float)histogram_index[i] / (float)sum; // Store normalized values in hist
     }
-
     // Write the histogram to the file
     for (i = 0; i <= 255; i++) {
         fprintf(fptr, "\n%f", hist[i]); // Corrected to print normalized histogram
     }
-
     fclose(fptr); // Ensure file is closed
+}
+
+void ImageProcessing::computeImageHistogramFile(unsigned char * _imageData, int imageRows, int imageColumns, float hist[],const char *histFile) {
+    FILE *fptr;
+    fptr = fopen(histFile, "w");
+    if (fptr == nullptr) {
+        printf("Error opening file!\n");
+        return;
+    }
+    int x, y, i;
+    long int histogram_index[256] = {0}; // Initialize to zero
+    long int sum = 0;
+    // Build histogram
+    for (y = 0; y < imageRows; y++) {
+        for (x = 0; x < imageColumns; x++) {
+            int pixelValue = _imageData[x + y * imageColumns]; // Correct pixel access
+            histogram_index[pixelValue]++;  // Increment corresponding bin
+            sum++;
+        }
+    }
+    // Normalize the histogram and write to output array
+    for (i = 0; i <= 255; i++) {
+        hist[i] = (float)histogram_index[i] / (float)sum; // Store normalized values in hist
+    }
+    // Write the histogram to the file
+    for (i = 0; i <= 255; i++) {
+        fprintf(fptr, "\n%f", hist[i]); // Corrected to print normalized histogram
+    }
+    fclose(fptr); // Ensure file is closed
+}
+
+void ImageProcessing::equalizeImageHistogram(unsigned char *_inputImageData, unsigned char *_outImageData, int imageRows, int imageColumns) {
+    int x, y, i, j;
+    int equalizedHistogram[256];
+    float histogram[256];
+    float sum;
+
+    const char initialHistogram[] ="init_hist.txt";
+    const char finalHistogram[] = "final_hist.txt";
+
+    computeImageHistogramFile(&_inputImageData[0], imageRows, imageColumns, &histogram[0], initialHistogram);
+    for (i = 0; i <= 255; i++) {
+        sum = 0.0;
+        for (j = 0; j <= i; j++){
+            sum = sum + histogram[j];
+        }
+        equalizedHistogram[i] =  (int)(255 * sum + 0.5);
+
+    }
+    for (y = 0; y < imageRows; y++)
+    {
+        for (x = 0; x < imageColumns; x++)
+        {
+            *(_outImageData + x + y * imageColumns) = equalizedHistogram[*(_inputImageData + x + y * imageColumns)];
+        }
+    }
+    computeImageHistogramFile(&_outImageData[0], imageRows, imageColumns, &histogram[0], finalHistogram);
 }

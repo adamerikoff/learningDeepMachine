@@ -46,6 +46,8 @@ class ImageProcessing {
         void decreaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness);
 
         void computeImageHistogram(unsigned char *_imageData, int imageRows, int imageColumns, float hist[]);
+        void computeImageHistogramFile(unsigned char * _imageData, int imageRows, int imageColumns, float hist[],const char *histFile);
+        void equalizeImageHistogram(unsigned char *_inputImageData, unsigned char *_outImageData, int imageRows, int imageColumns);
 
     protected:
 
