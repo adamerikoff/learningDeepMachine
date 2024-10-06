@@ -1,3 +1,21 @@
+# Image Processing Library
+| Functionality                                          | Done  |
+|--------------------------------------------------------|-------|
+| **Image I/O**                                          |       |
+| Read image from file                                   | ✅    |
+| Write image to file                                    | ✅    |
+| **Image Data Operations**                              |       |
+| Copy image data                                        | ✅    |
+| Binarize image data using a specified threshold        | ✅    |
+| Iteratively binarize image data                        | ✅    |
+| Increase brightness of an image                        | ✅    |
+| Decrease brightness of an image                        | ✅    |
+| **Histogram Operations**                               |       |
+| Compute image histogram                                | ✅    |
+| Compute and save image histogram to a file             | ✅    |
+| Equalize image histogram                               | ✅    |
+
+# Models Implementations
 | Model Name                                                                    | Done  |
 |-------------------------------------------------------------------------------|-------|
 | **Convolutional Neural Networks (CNNs):**                                     |       |
