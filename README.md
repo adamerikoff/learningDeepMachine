@@ -1,8 +1,8 @@
-| Model Name                                          | Done  |
-|----------------------------------------------------|-------|
-| **Convolutional Neural Networks (CNNs):**          |       |
-| LeNet                                               |       |
-| AlexNet                                             |       |
+| Model Name                                                                    | Done  |
+|-------------------------------------------------------------------------------|-------|
+| **Convolutional Neural Networks (CNNs):**                                     |       |
+| [LeNet](https://github.com/adamerikoff/computerVision/tree/main/LeNet)        | ✅    |
+| [AlexNet](https://github.com/adamerikoff/computerVision/tree/main/AlexNet)    | ✅    |
 | VGG (VGG16, VGG19)                                  |       |
 | GoogleNet (Inception)                               |       |
 | ResNet (ResNet50, ResNet101)                        |       |
@@ -16,7 +16,7 @@
 | RegNet                                              |       |
 | ConvNeXt                                            |       |
 | MixNet                                              |       |
-|                                                    |       |
+|                                                     |       |
 | **Object Detection:**                               |       |
 | YOLO (You Only Look Once)                           |       |
 | SSD (Single Shot MultiBox Detector)                 |       |
@@ -29,7 +29,7 @@
 | YOLOv4, YOLOv5                                      |       |
 | DETR (Detection Transformer)                        |       |
 | FCOS (Fully Convolutional One-Stage Object Detection)|      |
-|                                                    |       |
+|                                                     |       |
 | **Pose Estimation:**                                |       |
 | 2D Pose Estimation (Heatmap-based methods)          |       |
 | Part-based models                                   |       |
@@ -40,7 +40,7 @@
 | AlphaPose                                           |       |
 | DensePose                                           |       |
 | HRNet (High-Resolution Network for Pose Estimation) |       |
-|                                                    |       |
+|                                                     |       |
 | **Image Segmentation:**                             |       |
 | U-Net                                               |       |
 | DeepLab                                             |       |
@@ -78,39 +78,39 @@
 | MLP-Mixer                                           |       |
 | ConvMixer                                           |       |
 | Hybrid Vision Transformers (Swin + CNNs)            |       |
-|                                                    |       |
+|                                                     |       |
 | **Image Denoising:**                                |       |
 | Non-Local Means Denoising                           |       |
 | Denoising Autoencoders (DAE)                        |       |
 | BM3D (Block-Matching and 3D Filtering)              |       |
-|                                                    |       |
+|                                                     |       |
 | **Image Super-Resolution:**                         |       |
 | Generative Adversarial Networks (GANs)              |       |
 | SRResNet (Super-Resolution ResNet)                  |       |
 | Real-ESRGAN (Enhanced Super-Resolution GAN)         |       |
-|                                                    |       |
+|                                                     |       |
 | **Deep Reinforcement Learning for Vision Tasks:**   |       |
 | Deep Q-Networks (DQNs)                              |       |
-|                                                    |       |
+|                                                     |       |
 | **Optical Flow Estimation:**                        |       |
 | Farneback algorithm                                 |       |
 | PWC-Net (Pyramid, Warping, and Cost volume Network) |       |
 | LiteFlowNet                                         |       |
 | RAFT (Recurrent All-Pairs Field Transforms)         |       |
-|                                                    |       |
+|                                                     |       |
 | **Visual Object Tracking (VOT):**                   |       |
 | Kernelized Correlation Filters (KCF)                |       |
 | GOTURN (Generic Object Tracking Using Regression Networks)| |   |
 | SiamRPN (Siamese Region Proposal Network)           |       |
 | ByteTrack                                           |       |
-|                                                    |       |
+|                                                     |       |
 | **Action Recognition:**                             |       |
 | Two-Stream Networks                                 |       |
 | 3D Convolutional Neural Networks (3D CNNs)          |       |
 | I3D (Inflated 3D ConvNet)                           |       |
 | SlowFast Networks                                   |       |
 | TSM (Temporal Shift Module)                         |       |
-|                                                    |       |
+|                                                     |       |
 | **3D Vision:**                                      |       |
 | Structure from Motion (SfM)                         |       |
 | Multi-View Stereo (MVS)                             |       |
@@ -118,7 +118,7 @@
 | PointNet                                            |       |
 | MeshCNN                                             |       |
 | Volumetric CNNs                                     |       |
-|                                                    |       |
+|                                                     |       |
 | **Other Frameworks and Tools:**                     |       |
 | Darknet                                             |       |
 | VGGFace2                                            |       |
