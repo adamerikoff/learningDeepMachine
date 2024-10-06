@@ -1,10 +1,11 @@
 #!/bin/bash
 
-main="main.c"
+main="main.cpp"
+imageProcessing="./lib/ImageProcessing.cpp"
 output="output.o"
 
-# Compile both main.c and hash_table.c
-if gcc "$main" -o "$output"; then
+# Compile main.cpp and ImageProcessing.cpp
+if g++ "$main" "$imageProcessing" -o "$output"; then
     ./"$output"
 else
     echo "Compilation failed."
