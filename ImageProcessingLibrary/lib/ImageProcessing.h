@@ -13,6 +13,8 @@ static const int MAX_COLOUR = 255;
 static const int MIN_COLOUR = 0;
 static const int COLOUR_WHITE = MAX_COLOUR;
 static const int COLOUR_BLACK = MIN_COLOUR;
+static const int N_GRAYLEVELS = 255;
+
 
 
 class ImageProcessing {
@@ -43,6 +45,7 @@ class ImageProcessing {
         void increaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness);
         void decreaseBrightness(unsigned char *_inputImageData, unsigned char *_outImageData, int imageSize, int brightness);
 
+        void computeImageHistogram(unsigned char *_imageData, int imageRows, int imageColumns, float hist[]);
 
     protected:
 

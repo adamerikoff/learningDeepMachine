@@ -4,7 +4,9 @@
 using namespace std;
 
 int main() {
-    int imgWidth, imgHeight, imgBitDepth;
+    float imageHistogram[N_GRAYLEVELS];
+
+    int imageWidth, imageHeight, imgBitDepth;
     unsigned char imgHeader[BMP_HEADER_SIZE];
     unsigned char imgColorTable[BMP_COLOUR_TABLE_SIZE];
     unsigned char imgInBuffer[_512by512_IMG_SIZE];
@@ -15,8 +17,8 @@ int main() {
 
     ImageProcessing *myImage  = new ImageProcessing(imgName,
                                                     newImgName,
-                                                    &imgHeight,
-                                                    &imgWidth,
+                                                    &imageHeight,
+                                                    &imageWidth,
                                                     &imgBitDepth,
                                                     &imgHeader[0],
                                                     &imgColorTable[0],
@@ -25,13 +27,14 @@ int main() {
                                                     );
 
     myImage->readImage();
-    myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
+    // myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
     // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
+    myImage->computeImageHistogram(imgInBuffer, imageHeight, imageWidth, imageHistogram);
     myImage->writeImage();
 
-    cout<<"Success !"<<endl;
-    cout<<"Image Height : "<<imgHeight<<endl;
-    cout<<"Image Width  : "  <<imgWidth<<endl;
+    cout << "Success !" << endl;
+    cout << "Image Height : " << imageHeight << endl;
+    cout << "Image Width  : " << imageWidth << endl;
 
     return 0;
 }

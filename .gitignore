@@ -2,3 +2,4 @@
 .DS_Store
 .env
 /AlexNet/tiny-imagenet-200
+ImageProcessingLibrary/histogram.txt

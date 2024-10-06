@@ -1,4 +1,6 @@
 #include "./ImageProcessing.h"
+#include <cmath>
+#include <cstdio>
 
 ImageProcessing::ImageProcessing(
     const char *_inImageName,
@@ -132,4 +134,39 @@ void ImageProcessing::decreaseBrightness(unsigned char *_inputImageData, unsigne
         int temp = _inputImageData[i] - brightness;
         _outImageData[i] = (temp > MIN_COLOUR) ? MIN_COLOUR : temp;
     }
+}
+
+void ImageProcessing::computeImageHistogram(unsigned char *_imageData, int imageRows, int imageColumns, float hist[]) {
+    FILE *fptr;
+    fptr = fopen("./histogram.txt", "w");
+
+    if (fptr == nullptr) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    int x, y, i;
+    long int histogram_index[256] = {0}; // Initialize to zero
+    long int sum = 0;
+
+    // Build histogram
+    for (y = 0; y < imageRows; y++) {
+        for (x = 0; x < imageColumns; x++) {
+            int pixelValue = _imageData[x + y * imageColumns]; // Correct pixel access
+            histogram_index[pixelValue]++;  // Increment corresponding bin
+            sum++;
+        }
+    }
+
+    // Normalize the histogram and write to output array
+    for (i = 0; i <= 255; i++) {
+        hist[i] = (float)histogram_index[i] / (float)sum; // Store normalized values in hist
+    }
+
+    // Write the histogram to the file
+    for (i = 0; i <= 255; i++) {
+        fprintf(fptr, "\n%f", hist[i]); // Corrected to print normalized histogram
+    }
+
+    fclose(fptr); // Ensure file is closed
 }
