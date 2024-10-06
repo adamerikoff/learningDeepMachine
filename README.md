@@ -21,7 +21,7 @@
 | Image Reflection                                       |       |
 | Image Shearing                                         |       |
 | **Filters**                                            |       |
-| Image Blur Filter                                      |       |
+| Image Mean-Blur Filter                                 | ✅    |
 | Image Sepia Filter                                     |       |
 
 # Models Implementations

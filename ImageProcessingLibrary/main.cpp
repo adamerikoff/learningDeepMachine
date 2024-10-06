@@ -35,7 +35,8 @@ int main() {
     // myImage->equalizeImageHistogram(imgInBuffer, imgOutBuffer, imageHeight, imageWidth);
     // myImage->rotateImage(imgInBuffer, imgOutBuffer, &imageWidth, &imageHeight);
     // myImage->scaleImage(imgInBuffer, imgOutBuffer, imageWidth, imageHeight, newWidth, newHeight);
-    myImage->inverseGreyLevel(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
+    // myImage->inverseGreyLevel(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
+    myImage->meanBlurFilter(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
     myImage->writeImage();
 
     cout << "Success !" << endl;

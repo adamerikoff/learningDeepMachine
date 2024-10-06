@@ -261,3 +261,34 @@ void ImageProcessing::inverseGreyLevel(unsigned char *_inputImageData, unsigned 
         }
     }
 }
+
+void ImageProcessing::meanBlurFilter(unsigned char *_inputImageData, unsigned char *_outputImageData, int imageWidth, int imageHeight) {
+    // Define the kernel size
+    const int kernelSize = 3;
+    const int offset = kernelSize / 2;
+
+    // Loop through each pixel in the image
+    for (int y = 0; y < imageHeight; y++) {
+        for (int x = 0; x < imageWidth; x++) {
+            int sum = 0;
+            int count = 0;
+
+            // Iterate over the kernel
+            for (int ky = -offset; ky <= offset; ky++) {
+                for (int kx = -offset; kx <= offset; kx++) {
+                    int nx = x + kx; // Neighbor x
+                    int ny = y + ky; // Neighbor y
+
+                    // Check if the neighbor is within the image bounds
+                    if (nx >= 0 && nx < imageWidth && ny >= 0 && ny < imageHeight) {
+                        sum += _inputImageData[ny * imageWidth + nx]; // Accumulate pixel value
+                        count++; // Count valid neighbors
+                    }
+                }
+            }
+
+            // Calculate the mean value and assign it to the output image
+            _outputImageData[y * imageWidth + x] = (float)sum / (float)count;
+        }
+    }
+}

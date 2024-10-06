@@ -53,6 +53,8 @@ class ImageProcessing {
         void rotateImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int *width, int *height);
         void scaleImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int originalWidth, int originalHeight, int newWidth, int newHeight);
 
+        void meanBlurFilter(unsigned char *_inputImageData, unsigned char *_outputImageData, int imageWidth, int imageHeight);
+
     protected:
 
     private:
