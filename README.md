@@ -16,6 +16,7 @@
 | Equalize image histogram                               | ✅    |
 | **Affine Transformations**                             |       |
 | Image Rotation                                         | ✅    |
+| Image Grey Inverse                                     | ✅    |
 | Image Scaling                                          |       |
 | Image Reflection                                       |       |
 | Image Shearing                                         |       |

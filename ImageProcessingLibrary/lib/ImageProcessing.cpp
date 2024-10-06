@@ -238,3 +238,26 @@ void ImageProcessing::rotateImage(unsigned char *_inputImageData, unsigned char 
         }
     }
 }
+
+void ImageProcessing::scaleImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int originalWidth, int originalHeight, int newWidth, int newHeight) {
+    float x_ratio = (float)(originalWidth) / newWidth;
+    float y_ratio = (float)(originalHeight) / newHeight;
+    int px, py;
+
+    for (int y = 0; y < newHeight; ++y) {
+        for (int x = 0; x < newWidth; ++x) {
+            px = (int)(x * x_ratio);
+            py = (int)(y * y_ratio);
+
+            _outputImageData[y * newWidth + x] = _inputImageData[py * originalWidth + px];
+        }
+    }
+}
+
+void ImageProcessing::inverseGreyLevel(unsigned char *_inputImageData, unsigned char *_outImageData, int imageWidth, int imageHeight) {
+    for (int i = 0; i < imageHeight; i++) {
+        for (int y = 0; y < imageWidth; y++) {
+            _outImageData[i * imageWidth + y] = 255 - _inputImageData[i * imageWidth + y];
+        }
+    }
+}

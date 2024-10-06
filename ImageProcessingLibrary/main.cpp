@@ -9,7 +9,7 @@ int main() {
     unsigned char imgHeader[BMP_HEADER_SIZE];
     unsigned char imgColorTable[BMP_COLOUR_TABLE_SIZE];
     unsigned char imgInBuffer[_512by512_IMG_SIZE];
-    unsigned char imgOutBuffer[_512by512_IMG_SIZE];
+    unsigned char imgOutBuffer[1000*1000];
 
     const char imgName[] ="./images/cameraman.bmp";
     const char newImgName[] ="./images/cameraman_new.bmp";
@@ -25,12 +25,17 @@ int main() {
                                                     &imgOutBuffer[0]
                                                     );
 
+
     myImage->readImage();
+    cout << "Initial Image Height : " << imageHeight << endl;
+    cout << "Initial Image Width  : " << imageWidth << endl;
     // myImage->iterativelyBinarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE);
     // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
     // myImage->computeImageHistogram(imgInBuffer, imageHeight, imageWidth, imageHistogram);
     // myImage->equalizeImageHistogram(imgInBuffer, imgOutBuffer, imageHeight, imageWidth);
-    myImage->rotateImage(imgInBuffer, imgOutBuffer, &imageWidth, &imageHeight);
+    // myImage->rotateImage(imgInBuffer, imgOutBuffer, &imageWidth, &imageHeight);
+    // myImage->scaleImage(imgInBuffer, imgOutBuffer, imageWidth, imageHeight, newWidth, newHeight);
+    myImage->inverseGreyLevel(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
     myImage->writeImage();
 
     cout << "Success !" << endl;
