@@ -10,8 +10,8 @@ int main() {
     unsigned char imgInBuffer[_512by512_IMG_SIZE];
     unsigned char imgOutBuffer[_512by512_IMG_SIZE];
 
-    const char imgName[] ="./cameraman.bmp";
-    const char newImgName[] ="./cameraman_copy.bmp";
+    const char imgName[] ="./images/cameraman.bmp";
+    const char newImgName[] ="./images/cameraman_bright.bmp";
 
     ImageProcessing *myImage  = new ImageProcessing(imgName,
                                                     newImgName,
@@ -24,13 +24,14 @@ int main() {
                                                     &imgOutBuffer[0]
                                                     );
 
-     myImage->readImage();
-     myImage->copyImageData(imgInBuffer,imgOutBuffer,_512by512_IMG_SIZE);
-     myImage->writeImage();
+    myImage->readImage();
+    myImage->binarizeImageData(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
+    // myImage->increaseBrightness(imgInBuffer, imgOutBuffer, _512by512_IMG_SIZE, 100);
+    myImage->writeImage();
 
-     cout<<"Success !"<<endl;
-     cout<<"Image Height : "<<imgHeight<<endl;
-     cout<<"Image Width  : "  <<imgWidth<<endl;
+    cout<<"Success !"<<endl;
+    cout<<"Image Height : "<<imgHeight<<endl;
+    cout<<"Image Width  : "  <<imgWidth<<endl;
 
     return 0;
 }
