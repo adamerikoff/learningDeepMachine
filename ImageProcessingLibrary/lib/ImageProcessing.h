@@ -5,6 +5,7 @@
 #include <cmath>   // For std::abs
 #include <numeric> // For std::accumulate
 #include <algorithm> // For std::count_if
+#include <cstdio>
 
 static const int _512by512_IMG_SIZE = 262144;
 static const int BMP_COLOUR_TABLE_SIZE = 1024;
@@ -54,6 +55,8 @@ class ImageProcessing {
         void scaleImage(unsigned char *_inputImageData, unsigned char *_outputImageData, int originalWidth, int originalHeight, int newWidth, int newHeight);
 
         void meanBlurFilter(unsigned char *_inputImageData, unsigned char *_outputImageData, int imageWidth, int imageHeight);
+
+        void detectLines(unsigned char *_inputImageData, unsigned char *_outputImageData, int imageWidth, int imageHeight, int maskType);
 
     protected:
 

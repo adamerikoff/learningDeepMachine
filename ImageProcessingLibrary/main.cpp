@@ -11,8 +11,8 @@ int main() {
     unsigned char imgInBuffer[_512by512_IMG_SIZE];
     unsigned char imgOutBuffer[1000*1000];
 
-    const char imgName[] ="./images/cameraman.bmp";
-    const char newImgName[] ="./images/cameraman_new.bmp";
+    const char imgName[] ="./images/houses.bmp";
+    const char newImgName[] ="./images/houses_dl.bmp";
 
     ImageProcessing *myImage  = new ImageProcessing(imgName,
                                                     newImgName,
@@ -36,7 +36,8 @@ int main() {
     // myImage->rotateImage(imgInBuffer, imgOutBuffer, &imageWidth, &imageHeight);
     // myImage->scaleImage(imgInBuffer, imgOutBuffer, imageWidth, imageHeight, newWidth, newHeight);
     // myImage->inverseGreyLevel(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
-    myImage->meanBlurFilter(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
+    // myImage->meanBlurFilter(imgInBuffer, imgOutBuffer, imageWidth, imageHeight);
+    myImage->detectLines(imgInBuffer, imgOutBuffer, imageWidth, imageHeight, 3);
     myImage->writeImage();
 
     cout << "Success !" << endl;

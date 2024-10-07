@@ -4,7 +4,7 @@
 main="main.cpp"
 imageProcessing="./lib/ImageProcessing.cpp"
 output="output.o"
-cpp_standard="c++11"  # Set your desired C++ standard
+cpp_standard="c++17"  # Set your desired C++ standard
 
 # Function to clean up the generated binary
 cleanup() {

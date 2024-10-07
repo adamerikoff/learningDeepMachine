@@ -1,6 +1,4 @@
 #include "./ImageProcessing.h"
-#include <cmath>
-#include <cstdio>
 
 ImageProcessing::ImageProcessing(
     const char *_inImageName,
@@ -290,5 +288,78 @@ void ImageProcessing::meanBlurFilter(unsigned char *_inputImageData, unsigned ch
             // Calculate the mean value and assign it to the output image
             _outputImageData[y * imageWidth + x] = (float)sum / (float)count;
         }
+    }
+}
+
+void ImageProcessing::detectLines(unsigned char *_inputImageData, unsigned char *_outputImageData, int imageWidth, int imageHeight, int maskType) {
+    // Define common 3x3 line detection masks
+    const int horizontalMask[3][3] = {
+        {-1, -1, -1},
+        { 2,  2,  2},
+        {-1, -1, -1}
+    };
+
+    const int verticalMask[3][3] = {
+        {-1,  2, -1},
+        {-1,  2, -1},
+        {-1,  2, -1}
+    };
+
+    const int diagonalMaskR[3][3] = {
+        { 2, -1, -1},
+        {-1,  2, -1},
+        {-1, -1,  2}
+    };
+
+    const int diagonalMaskL[3][3] = {
+        {-1, -1,  2},
+        {-1,  2, -1},
+        { 2, -1, -1}
+    };
+
+    // Select the appropriate mask based on maskType
+    const int (*mask)[3];
+    if (maskType == 0) {
+        mask = horizontalMask;
+    } else if (maskType == 1) {
+        mask = verticalMask;
+    } else if (maskType == 2) {
+        mask = diagonalMaskR;
+    } else if (maskType == 3) {
+        mask = diagonalMaskL;
+    } else {
+        // If an unsupported maskType is given, exit the function
+        return;
+    }
+
+    // Convolve the image with the selected mask
+    for (int y = 1; y < imageHeight - 1; ++y) {
+        for (int x = 1; x < imageWidth - 1; ++x) {
+            int sum = 0;
+
+            // Apply the 3x3 mask to the neighborhood of the current pixel
+            for (int dy = -1; dy <= 1; ++dy) {
+                for (int dx = -1; dx <= 1; ++dx) {
+                    int pixelValue = _inputImageData[(y + dy) * imageWidth + (x + dx)];
+                    sum += pixelValue * mask[dy + 1][dx + 1];
+                }
+            }
+
+            // Clamp the result to the valid pixel range (0 to 255)
+            sum = std::clamp(sum, 0, 255);
+
+            // Write the result to the output image
+            _outputImageData[y * imageWidth + x] = (int)(sum);
+        }
+    }
+
+    // Handle the edges of the image (set them to zero in the output)
+    for (int x = 0; x < imageWidth; ++x) {
+        _outputImageData[x] = 0;                         // Top row
+        _outputImageData[(imageHeight - 1) * imageWidth + x] = 0; // Bottom row
+    }
+    for (int y = 0; y < imageHeight; ++y) {
+        _outputImageData[y * imageWidth] = 0;            // Left column
+        _outputImageData[y * imageWidth + (imageWidth - 1)] = 0; // Right column
     }
 }

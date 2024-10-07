@@ -23,6 +23,7 @@
 | **Filters**                                            |       |
 | Image Mean-Blur Filter                                 | ✅    |
 | Image Sepia Filter                                     |       |
+| Image Line Detection                                   | ✅    |
 
 # Models Implementations
 | Model Name                                                                    | Done  |
